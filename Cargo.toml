@@ -1,0 +1,30 @@
+[package]
+name = "planboard"
+version = "1.0.0"
+edition = "2021"
+description = "Planboard - a desktop project manager with Kanban boards"
+
+[[bin]]
+name = "planboard"
+path = "src/main.rs"
+
+[dependencies]
+eframe = "0.37"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", features = ["serde"] }
+png = "0.18"
+rfd = "0.15"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+winit = "0.30"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 2
+
+[profile.release]
+opt-level = 3
+lto = "thin"
