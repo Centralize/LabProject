@@ -1,4 +1,4 @@
-//! Planboard: a desktop project manager with Kanban boards.
+//! LabProject: a desktop project manager with Kanban boards.
 //!
 //! Run with `--screenshot <file.png>` to open the window without taking focus,
 //! draw about 120 frames, save a picture of the window and exit.
@@ -56,8 +56,8 @@ fn main() {
     let screenshot_mode = screenshot.is_some();
 
     let mut viewport = egui::ViewportBuilder::default()
-        .with_title("Planboard")
-        .with_app_id("planboard")
+        .with_title("LabProject")
+        .with_app_id("labproject")
         .with_inner_size([1440.0, 900.0])
         .with_min_inner_size([960.0, 600.0])
         .with_icon(Arc::new(app::icon()));
@@ -81,12 +81,12 @@ fn main() {
     }
 
     let result = eframe::run_native(
-        "Planboard",
+        "LabProject",
         options,
         Box::new(move |cc| Ok(Box::new(app::App::new(cc, screenshot)))),
     );
     if let Err(e) = result {
-        eprintln!("Planboard couldn't start: {e}");
+        eprintln!("LabProject couldn't start: {e}");
         std::process::exit(1);
     }
     std::process::exit(app::EXIT_CODE.load(Ordering::SeqCst));

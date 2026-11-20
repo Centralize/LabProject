@@ -1,11 +1,11 @@
 [package]
-name = "planboard"
-version = "1.0.0"
+name = "LabProject"
+version = "1.0.1"
 edition = "2021"
-description = "Planboard - a desktop project manager with Kanban boards"
+description = "LabProject - a desktop project manager with Kanban boards"
 
 [[bin]]
-name = "planboard"
+name = "LabProject"
 path = "src/main.rs"
 
 [dependencies]

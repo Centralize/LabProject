@@ -696,10 +696,10 @@ impl App {
     // Import / export
 
     fn export_all(&mut self) {
-        let file = model::ExportFile { app: "Planboard".into(), version: 1, projects: self.ws.projects.clone() };
+        let file = model::ExportFile { app: "LabProject".into(), version: 1, projects: self.ws.projects.clone() };
         let Some(path) = rfd::FileDialog::new()
-            .add_filter("Planboard projects", &["json"])
-            .set_file_name("planboard-projects.json")
+            .add_filter("LabProject projects", &["json"])
+            .set_file_name("LabProject-projects.json")
             .save_file()
         else {
             return;
@@ -729,7 +729,7 @@ impl App {
     }
 
     fn import(&mut self) {
-        let Some(path) = rfd::FileDialog::new().add_filter("Planboard projects", &["json"]).pick_file() else {
+        let Some(path) = rfd::FileDialog::new().add_filter("LabProject projects", &["json"]).pick_file() else {
             return;
         };
         let projects = std::fs::read_to_string(&path).ok().and_then(|t| {
@@ -752,7 +752,7 @@ impl App {
                 self.touch();
                 self.show_toast(format!("Imported {n} project{}", if n == 1 { "" } else { "s" }));
             }
-            _ => self.show_toast("That file has no Planboard projects in it"),
+            _ => self.show_toast("That file has no LabProject projects in it"),
         }
     }
 
@@ -867,7 +867,7 @@ impl App {
                     let (rect, _) = ui.allocate_exact_size(Vec2::splat(30.0), Sense::hover());
                     paint_logo(ui.painter(), rect, pal.accent);
                     ui.add_space(2.0);
-                    ui.label(RichText::new("Planboard").size(19.0).strong().color(pal.text));
+                    ui.label(RichText::new("LabProject").size(19.0).strong().color(pal.text));
                 });
                 ui.add_space(14.0);
                 ui.horizontal(|ui| {
